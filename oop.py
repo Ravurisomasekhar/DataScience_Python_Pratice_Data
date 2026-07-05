@@ -100,85 +100,324 @@
 
 
 # ### Assignment 5: Class Inheritance
-# Create a base class named `Person` with attributes `name` and `age`. Create a derived class named `Employee` that inherits from `Person` and adds an attribute `employee_id`. Create an object of the derived class and print its attributes.
+# Create a base class named `Person` with attributes `name` and `age`. 
+# Create a derived class named `Employee` that inherits from `Person` and adds an attribute `employee_id`.
+#  Create an object of the derived class and print its attributes.
 
 
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+
+# class Employee(Person):
+#     def __init__(self, name, age, employee_id):
+#         super().__init__(name, age)   # Call Person constructor
+#         self.employee_id = employee_id
 
 
-
+# # Create Employee object
+# emp = Employee("Soma", 24, 2024501027)
+# # Print attributes
+# print(emp.name)
+# print(emp.age)
+# print(emp.employee_id)
 
 
 # ### Assignment 6: Method Overriding
-# In the `Employee` class, override the `__str__` method to return a string representation of the object. Create an object of the class and print it.
+# In the `Employee` class, override the `__str__` method to return a string representation of the object. 
+# Create an object of the class and print it.
 
+# class Employee:
+#     def __init__(self,name):
+#         self.name = name
+    
+#     def __str__(self):
+#         return f"{self.name}"
 
-
-
+# home = Employee("soma")
+# print(home)
 
 
 # ### Assignment 7: Class Composition
-# Create a class named `Address` with attributes `street`, `city`, and `zipcode`. Create a class named `Person` that has an `Address` object as an attribute. Create an object of the `Person` class and print its address.
+# Create a class named `Address` with attributes `street`, `city`, and `zipcode`.
+#  Create a class named `Person` that has an `Address` object as an attribute. 
+# Create an object of the `Person` class and print its address.
+
+# class Address:
+#     def __init__(self, street, city, zipcode):
+#         self.street = street
+#         self.city = city
+#         self.zipcode = zipcode
+
+
+# class Person:
+#     def __init__(self, address):
+#         self.address = address
 
 
 
+# address1 = Address("MG Road", "Hyderabad", "500001")
 
 
+# person1 = Person(address1)
+
+# print("Street:", person1.address.street)
+# print("City:", person1.address.city)
+# print("Zipcode:", person1.address.zipcode)
 
 # ### Assignment 8: Class with Class Variables
-# Create a class named `Counter` with a class variable `count`. Each time an object is created, increment the count. Add a method to get the current count. Create multiple objects and print the count.
+# Create a class named `Counter` with a class variable `count`. Each time an object is created,
+#  increment the count. Add a method to get the current count. Create multiple objects and print the count.
+
+# class Counter:
+#     count = 0          
+
+#     def __init__(self):
+#         Counter.count += 1
+
+#     def get_count(self):
+#         return Counter.count
 
 
+# # Create objects
+# obj1 = Counter()
+# obj2 = Counter()
+# obj3 = Counter()
 
-
-
+# # Print the count
+# print("Current Count:", obj3.get_count())
 
 
 # ### Assignment 9: Static Methods
-# Create a class named `MathOperations` with a static method to calculate the square root of a number. Call the static method without creating an object.
+# Create a class named `MathOperations` with a static method to calculate the square root of a number. 
+# Call the static method without creating an object.
+
+# import math
+
+# class MathOperations:
+    
+#     def __init__(self,number):
+#         self.number = number 
+    
+#     def Static_cal(self):
+#         return math.sqrt(self.number)
+
+# output = MathOperations(5)
+
+# print(output.Static_cal())
 
 
+# import math
+
+# class MathOperations:
+
+#     @staticmethod
+#     def static_cal(number):
+#         return math.sqrt(number)
 
 
+# print(MathOperations.static_cal(25))
 
 
 # ### Assignment 10: Class with Properties
-# Create a class named `Rectangle` with private attributes `length` and `width`. Use properties to get and set these attributes. Create an object of the class and test the properties.
+# Create a class named `Rectangle` with private attributes `length` and `width`.
+#  Use properties to get and set these attributes. Create an object of the class and test the properties.
+
+# class Rectangle:
+
+#     def __init__(self, length, width):
+#         self.__length = length
+#         self.__width = width
+
+#     # Getter for length
+#     @property
+#     def length(self):
+#         return self.__length
+
+#     # Setter for length
+#     @length.setter
+#     def length(self, value):
+#         self.__length = value
+
+#     # Getter for width
+#     @property
+#     def width(self):
+#         return self.__width
+
+#     # Setter for width
+#     @width.setter
+#     def width(self, value):
+#         self.__width = value
 
 
+# # Create object
+# rect = Rectangle(10, 5)
 
+# # Get values
+# print("Length:", rect.length)
+# print("Width:", rect.width)
 
+# # Set new values
+# rect.length = 20
+# rect.width = 15
+
+# # Print updated values
+# print("Updated Length:", rect.length)
+# print("Updated Width:", rect.width)
 
 # ### Assignment 11: Abstract Base Class
-# Create an abstract base class named `Shape` with an abstract method `area`. Create derived classes `Circle` and `Square` that implement the `area` method. Create objects of the derived classes and call the `area` method.
+# Create an abstract base class named `Shape` with an abstract method `area`. 
+# Create derived classes `Circle` and `Square` that implement the `area` method. 
+# Create objects of the derived classes and call the `area` method.
+
+# from abc import ABC, abstractmethod
+# import math
 
 
+# class Shape(ABC):
+
+#     @abstractmethod
+#     def area(self):
+#         pass
 
 
+# class Circle(Shape):
 
+#     def __init__(self, radius):
+#         self.radius = radius
+
+#     def area(self):
+#         return math.pi * self.radius ** 2
+
+
+# class Square(Shape):
+
+#     def __init__(self, side):
+#         self.side = side
+
+#     def area(self):
+#         return self.side * self.side
+
+
+# circle = Circle(5)
+# square = Square(4)
+
+# print("Circle Area:", circle.area())
+# print("Square Area:", square.area())
 
 # ### Assignment 12: Operator Overloading
-# Create a class named `Vector` with attributes `x` and `y`. Overload the `+` operator to add two `Vector` objects. Create objects of the class and test the operator overloading.
+# Create a class named `Vector` with attributes `x` and `y`. Overload the `+` operator to add two `Vector` objects. 
+# Create objects of the class and test the operator overloading.
 
+class Vector:
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+
+v1 = Vector(2, 3)
+v2 = Vector(4, 5)
+
+result = v1 + v2
+
+print("Result:", result)
 
 
 
 
 # ### Assignment 13: Class with Custom Exception
-# Create a custom exception named `InsufficientBalanceError`. In the `BankAccount` class, raise this exception when a withdrawal amount is greater than the balance. Handle the exception and print an appropriate message.
+# Create a custom exception named `InsufficientBalanceError`. 
+# In the `BankAccount` class, raise this exception when a withdrawal amount is greater than the balance. 
+# Handle the exception and print an appropriate message.
+
+# class InsufficientBalanceError(Exception):
+#     pass
 
 
+# class BankAccount:
+
+#     def __init__(self, balance):
+#         self.balance = balance
+
+#     def withdraw(self, amount):
+#         if amount > self.balance:
+#             raise InsufficientBalanceError("Insufficient Balance!")
+#         self.balance -= amount
+#         print("Withdrawal Successful")
+#         print("Remaining Balance:", self.balance)
+
+
+# account = BankAccount(1000)
+
+# try:
+#     account.withdraw(1500)
+# except InsufficientBalanceError as e:
+#     print(e)
 
 
 
 # ### Assignment 14: Class with Context Manager
-# Create a class named `FileManager` that implements the context manager protocol to open and close a file. Use this class to read the contents of a file.
+# Create a class named `FileManager` that implements the context manager protocol to open and close a file. 
+# Use this class to read the contents of a file.
 
+# class FileManager:
+
+#     def __init__(self, filename):
+#         self.filename = filename
+
+#     def __enter__(self):
+#         self.file = open(self.filename, "r")
+#         return self.file
+
+#     def __exit__(self, exc_type, exc_value, traceback):
+#         self.file.close()
+#         print("File Closed")
+
+
+# with FileManager("sample.txt") as file:
+#     print(file.read())
 
 
 
 
 # ### Assignment 15: Chaining Methods
-# Create a class named `Calculator` with methods to add, subtract, multiply, and divide. Each method should return the object itself to allow method chaining. Create an object and chain multiple method calls.
+# Create a class named `Calculator` with methods to add, subtract, multiply, and divide. 
+# Each method should return the object itself to allow method chaining.
+#  Create an object and chain multiple method calls.
 
 
+# class Calculator:
 
+#     def __init__(self, value):
+#         self.value = value
+
+#     def add(self, num):
+#         self.value += num
+#         return self
+
+#     def subtract(self, num):
+#         self.value -= num
+#         return self
+
+#     def multiply(self, num):
+#         self.value *= num
+#         return self
+
+#     def divide(self, num):
+#         self.value /= num
+#         return self
+
+
+# calc = Calculator(10)
+
+# result = calc.add(5).multiply(2).subtract(4).divide(2)
+
+# print("Final Value:", result.value)
